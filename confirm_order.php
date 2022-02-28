@@ -7,7 +7,8 @@ $name = $_POST['name'];
 $card_num = $_POST['card_num'];
 $cvv= $_POST['cvv'];
 $expr = $_POST['expr'];
-$sql="SELECT * from bank where card_num = $card_num ";
+$card =str_replace(' ', '', $card_num);
+$sql="SELECT * from bank where card_num = $card ";
 $query=mysqli_query($con,$sql);
 $result=mysqli_fetch_array($query);
 if($result)
@@ -53,5 +54,11 @@ header('location:card_payment.php?id=no');
 
 }
 
-}
+}else{
+
+
+  header('location:card_payment.php?id=no');
+  
+  }
+  
 ?>
